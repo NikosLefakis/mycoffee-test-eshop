@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# My Coffee
 
-## Getting Started
+Εκπαιδευτικό e-shop για ένα φανταστικό κατάστημα ειδικού καφέ και αξεσουάρ. Ολόκληρο το καλάθι, το checkout, η αποθήκευση παραγγελιών και η προσομοίωση πληρωμής λειτουργούν. **Δεν γίνονται πραγματικές χρεώσεις** και δεν ζητούνται στοιχεία κάρτας.
 
-First, run the development server:
+## Τεχνολογίες
+
+- Next.js 16 (App Router, Cache Components), TypeScript, Tailwind CSS 4
+- shadcn/ui (μόνο το Button) και Material Symbols από τη Google για εικονίδια
+- Postgres (Neon) με το πακέτο `pg`
+- Zod για validation, κοινό σε client και server
+- Φωτογραφίες από το [Unsplash](https://unsplash.com) (δωρεάν άδεια)
+
+## Εκκίνηση
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env.local   # βάλε το POSTGRES_URL σου
+npm run db:setup             # δημιουργεί πίνακες και 12 προϊόντα (σβήνει τα υπάρχοντα δεδομένα)
+npm run dev                  # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Production: `npm run build` και `npm run start`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Μεταβλητές περιβάλλοντος
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Όνομα | Απαιτείται | Σκοπός |
+| --- | --- | --- |
+| `POSTGRES_URL` | ναι | Σύνδεση με τη βάση. Μόνο στον server, δεν φτάνει ποτέ στον browser. |
+| `NEXT_PUBLIC_SITE_URL` | στο production | Δημόσιο URL για canonical, sitemap και robots. Ορίζεται πριν το build. |
 
-## Learn More
+## Πώς λειτουργεί η αγορά
 
-To learn more about Next.js, take a look at the following resources:
+1. Το καλάθι ζει στον browser (`localStorage`) και κρατά μόνο προϊόντα και ποσότητες.
+2. Στο checkout, ο server ξαναϋπολογίζει όλες τις τιμές από τη βάση και ελέγχει διαθεσιμότητα. Δεν εμπιστεύεται τίποτα από τον browser.
+3. Η πληρωμή είναι προσομοίωση (επιτυχής ή αποτυχημένη). Παραγγελία αποθηκεύεται μόνο αν πετύχει.
+4. Η παραγγελία έχει τυχαίο UUID στο URL. Διπλή υποβολή επιστρέφει την ίδια παραγγελία.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Δομή
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+db/                 schema.sql, seed.sql, setup.mjs
+src/app/            σελίδες, server actions, robots, sitemap
+src/components/     UI και φόρμες
+src/lib/            βάση, προϊόντα, παραγγελίες, schemas, brand, φωτογραφίες
+```
 
-## Deploy on Vercel
+Το όνομα και το σλόγκαν του brand ορίζονται μόνο στο `src/lib/brand.ts`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Για πραγματική παραγωγική χρήση
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Το project είναι demo. Πριν δεχτείς πραγματικές παραγγελίες χρειάζονται, μεταξύ άλλων: πραγματικός πάροχος πληρωμών (π.χ. Stripe) με webhooks, αποστολή emails επιβεβαίωσης, rate limiting, διαχείριση αποθέματος και παραγγελιών, νομικά και φορολογικά θέματα (όροι χρήσης, πολιτική απορρήτου, ΦΠΑ, πολιτική επιστροφών) και συγκατάθεση και δυνατότητα διαγραφής για το newsletter.

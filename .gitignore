@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local tooling
+.serena/
+.claude/
+
+# keep the committed example, ignore real env files
+!.env.example

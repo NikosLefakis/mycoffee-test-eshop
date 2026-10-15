@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <mask id="slit">
+      <rect width="64" height="64" fill="#fff"/>
+      <path d="M33.5 25C27 33 38.5 45 30.5 55" fill="none" stroke="#000" stroke-width="4" stroke-linecap="round"/>
+    </mask>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#11233f"/>
+  <ellipse cx="32" cy="41" rx="13" ry="18.5" transform="rotate(-18 32 41)" fill="#f6f7f5" mask="url(#slit)"/>
+  <path d="M37.5 24C37 19.5 35 16 32 12.5" fill="none" stroke="#f6f7f5" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M34.2 17C36.5 9.5 44.5 8.5 50 11.5C49 19 41 22.5 34.2 17Z" fill="#e3a23c"/>
+  <path d="M32.3 13.2C29.5 6.5 21.5 6 17 9.5C18.5 16.5 26.5 19 32.3 13.2Z" fill="#e3a23c"/>
+</svg>
