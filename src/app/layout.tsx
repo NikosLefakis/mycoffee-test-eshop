@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Noto_Serif_Display } from "next/font/google";
 import { BRAND } from "@/lib/brand";
-import { HERO_PHOTO, photoUrl } from "@/lib/photos";
+import { HERO_PHOTO } from "@/lib/photos";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     siteName: BRAND.name,
     locale: "el_GR",
     type: "website",
-    images: [{ url: photoUrl(HERO_PHOTO), width: 1600, height: 1067 }],
+    images: [{ url: HERO_PHOTO, width: 2000, height: 1333 }],
   },
   twitter: { card: "summary_large_image" },
 };

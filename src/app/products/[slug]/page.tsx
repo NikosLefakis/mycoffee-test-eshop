@@ -6,7 +6,7 @@ import { Icon } from "@/components/icon";
 import { ProductVisual } from "@/components/product-visual";
 import { BRAND } from "@/lib/brand";
 import { CATEGORY_LABELS, formatPrice } from "@/lib/format";
-import { photoUrl, PRODUCT_PHOTOS } from "@/lib/photos";
+import { PRODUCT_PHOTOS } from "@/lib/photos";
 import { getProductBySlug, getProducts, type Product } from "@/lib/products";
 import { SITE_URL } from "@/lib/site";
 
@@ -29,7 +29,7 @@ export async function generateMetadata({
     openGraph: {
       title: product.name,
       description: product.description,
-      images: photo ? [{ url: photoUrl(photo) }] : undefined,
+      images: photo ? [{ url: photo }] : undefined,
     },
   };
 }
@@ -41,7 +41,7 @@ function ProductDetail({ product }: { product: Product }) {
     "@type": "Product",
     name: product.name,
     description: product.description,
-    image: photo ? [photoUrl(photo)] : undefined,
+    image: photo ? [`${SITE_URL}${photo}`] : undefined,
     category: CATEGORY_LABELS[product.category] ?? product.category,
     brand: { "@type": "Brand", name: BRAND.name },
     offers: {

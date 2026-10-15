@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Emblem } from "@/components/logo";
-import { photoUrl, PRODUCT_PHOTOS } from "@/lib/photos";
+import { PRODUCT_PHOTOS } from "@/lib/photos";
 
 // Product image: the stock photo mapped to this slug, or a neutral tile with
 // the brand emblem for products that do not have a photo yet.
@@ -34,7 +34,7 @@ export function ProductVisual({
   return (
     <div className="relative h-full w-full bg-secondary">
       <Image
-        src={photoUrl(photo)}
+        src={photo}
         alt={name}
         fill
         sizes={sizes}

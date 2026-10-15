@@ -10,7 +10,6 @@ import { CATEGORY_LABELS } from "@/lib/format";
 import {
   COLLECTION_PHOTOS,
   HERO_PHOTO,
-  photoUrl,
   STORY_PHOTO,
 } from "@/lib/photos";
 import { getProducts } from "@/lib/products";
@@ -162,7 +161,7 @@ export default function Home() {
     <div>
       <section className="relative isolate flex min-h-[34rem] items-center overflow-hidden md:min-h-[calc(100svh-7rem)]">
         <Image
-          src={photoUrl(HERO_PHOTO)}
+          src={HERO_PHOTO}
           alt=""
           fill
           priority
@@ -218,7 +217,7 @@ export default function Home() {
           <div className="relative mx-auto w-full max-w-md lg:max-w-none">
             <div className="relative aspect-[4/5] overflow-hidden bg-secondary">
               <Image
-                src={photoUrl(STORY_PHOTO)}
+                src={STORY_PHOTO}
                 alt="Παρασκευή καφέ φίλτρου με pour-over"
                 fill
                 sizes="(min-width: 1024px) 45vw, 90vw"
@@ -288,7 +287,7 @@ export default function Home() {
                 className="group relative block aspect-[4/5] overflow-hidden bg-secondary"
               >
                 <Image
-                  src={photoUrl(COLLECTION_PHOTOS[c.key])}
+                  src={COLLECTION_PHOTOS[c.key]}
                   alt=""
                   fill
                   sizes="(min-width: 768px) 33vw, 90vw"

@@ -20,16 +20,6 @@ const nextConfig: NextConfig = {
   },
   cacheComponents: true,
   partialPrefetching: true,
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-        pathname: "/photo-*",
-        search: "?auto=format&fit=crop&w=1600",
-      },
-    ],
-  },
   turbopack: {
     rules: {
       "*.css": {
