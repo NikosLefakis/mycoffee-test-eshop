@@ -7,6 +7,14 @@ const connectionString = process.env.POSTGRES_URL?.replace(
   "sslmode=verify-full",
 );
 
+// Without this, pg silently falls back to 127.0.0.1:5432 and the build fails
+// with a confusing ECONNREFUSED instead of naming the missing variable.
+if (!connectionString) {
+  throw new Error(
+    "POSTGRES_URL is not set. Add it to .env.local (local development) or to the Vercel project's Environment Variables.",
+  );
+}
+
 // Reused across hot-reloads in dev so we don't open a new pool per request.
 const globalForDb = globalThis as unknown as { pgPool?: Pool };
 

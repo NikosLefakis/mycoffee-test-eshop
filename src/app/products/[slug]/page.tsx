@@ -29,7 +29,10 @@ export async function generateMetadata({
     openGraph: {
       title: product.name,
       description: product.description,
-      images: photo ? [{ url: photo }] : undefined,
+      // 1200x630 share card per product (public/og), small enough for WhatsApp.
+      images: photo
+        ? [{ url: `/og/${product.slug}.jpg`, width: 1200, height: 630, alt: product.name }]
+        : undefined,
     },
   };
 }

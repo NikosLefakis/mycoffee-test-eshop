@@ -26,6 +26,7 @@ async function OrderDetails({ params }: { params: Promise<{ id: string }> }) {
     dateStyle: "long",
     timeStyle: "short",
     hour12: false,
+    timeZone: "Europe/Athens",
   }).format(order.createdAt);
 
   return (

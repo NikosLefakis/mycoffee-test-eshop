@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Manrope, Noto_Serif_Display } from "next/font/google";
 import { BRAND } from "@/lib/brand";
-import { HERO_PHOTO } from "@/lib/photos";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -37,7 +36,15 @@ export const metadata: Metadata = {
     siteName: BRAND.name,
     locale: "el_GR",
     type: "website",
-    images: [{ url: HERO_PHOTO, width: 2000, height: 1333 }],
+    // Dedicated 1200x630 crop under 300 KB: WhatsApp and Facebook skip bigger images.
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Καφές που χύνεται σε λευκή κούπα",
+      },
+    ],
   },
   twitter: { card: "summary_large_image" },
 };
