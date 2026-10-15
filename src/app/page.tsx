@@ -329,7 +329,7 @@ export default function Home() {
                 </h3>
                 <dl className="mt-2 divide-y divide-primary-foreground/15">
                   {g.specs.map(([k, v]) => (
-                    <div key={k} className="grid grid-cols-[6.5rem_1fr] gap-3 py-4 text-sm">
+                    <div key={k} className="grid grid-cols-[6.5rem_minmax(0,1fr)] gap-3 py-4 text-sm">
                       <dt className="text-primary-foreground/60">{k}</dt>
                       <dd>{v}</dd>
                     </div>

@@ -25,12 +25,12 @@ function LinkList({
   return (
     <nav aria-label={title}>
       <p className="text-sm text-primary-foreground/60">{title}</p>
-      <ul className="mt-5 space-y-3 text-[0.95rem]">
+      <ul className="mt-3 text-[0.95rem]">
         {links.map((l) => (
           <li key={l.href}>
             <Link
               href={l.href}
-              className="text-primary-foreground/85 transition-colors hover:text-primary-foreground"
+              className="block py-2 text-primary-foreground/85 transition-colors hover:text-primary-foreground"
             >
               {l.label}
             </Link>
@@ -80,7 +80,7 @@ export function SiteFooter() {
               href="https://smartwaves.gr"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary-foreground/85 underline underline-offset-4 transition-colors hover:text-primary-foreground"
+              className="inline-block py-2 text-primary-foreground/85 underline underline-offset-4 transition-colors hover:text-primary-foreground"
             >
               SmartwavesGR
             </a>

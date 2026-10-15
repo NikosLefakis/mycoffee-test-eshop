@@ -52,7 +52,7 @@ async function OrderDetails({ params }: { params: Promise<{ id: string }> }) {
         </div>
       </div>
 
-      <div className="mt-14 grid gap-12 md:grid-cols-[1fr_340px]">
+      <div className="mt-14 grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,1fr)_340px]">
         <ul className="divide-y divide-border border-y border-border">
           {order.items.map((item) => (
             <li key={item.productName} className="flex gap-5 py-6">

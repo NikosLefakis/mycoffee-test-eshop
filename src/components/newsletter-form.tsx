@@ -23,7 +23,7 @@ export function NewsletterForm() {
           defaultValue={state.status === "error" ? state.email : ""}
           aria-invalid={state.status === "error" ? true : undefined}
           aria-describedby="newsletter-message"
-          className="h-12 min-w-0 flex-1 border border-border bg-card px-4 text-sm transition-colors outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 aria-[invalid=true]:border-destructive"
+          className="h-12 w-full min-w-0 border sm:w-auto sm:flex-1 border-border bg-card px-4 text-sm transition-colors outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 aria-[invalid=true]:border-destructive"
         />
         <input
           type="text"

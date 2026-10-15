@@ -35,7 +35,7 @@ export function CartView() {
   }
 
   return (
-    <div className="mt-10 grid gap-12 md:grid-cols-[1fr_340px]">
+    <div className="mt-10 grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,1fr)_340px]">
       <ul className="divide-y divide-border border-y border-border">
         {items.map((item) => (
           <li key={item.productId} className="flex gap-5 py-6">
@@ -85,7 +85,7 @@ export function CartView() {
                 <button
                   type="button"
                   aria-label={`Αφαίρεση: ${item.name}`}
-                  className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
+                  className="inline-flex h-10 items-center gap-1 px-1 text-xs text-muted-foreground hover:text-foreground"
                   onClick={() => removeFromCart(item.productId)}
                 >
                   <Icon name="close" className="text-[16px]" />

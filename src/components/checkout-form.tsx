@@ -139,13 +139,13 @@ export function CheckoutForm() {
       action={formAction}
       onSubmit={onSubmit}
       noValidate
-      className="mt-10 grid gap-12 md:grid-cols-[1fr_360px]"
+      className="mt-10 grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,1fr)_360px]"
     >
       <input type="hidden" name="cart" value={cartPayload} />
       <IdempotencyKeyInput />
 
       <div className="space-y-10">
-        <fieldset>
+        <fieldset className="min-w-0">
           <legend className="font-heading text-2xl">Στοιχεία επικοινωνίας</legend>
           <div className="mt-5 space-y-5">
             {CONTACT_FIELDS.map((def) => (
@@ -154,7 +154,7 @@ export function CheckoutForm() {
           </div>
         </fieldset>
 
-        <fieldset>
+        <fieldset className="min-w-0">
           <legend className="font-heading text-2xl">Διεύθυνση αποστολής</legend>
           <div className="mt-5 space-y-5">
             {ADDRESS_FIELDS.map((def) => (
@@ -169,7 +169,7 @@ export function CheckoutForm() {
           </div>
         </fieldset>
 
-        <fieldset>
+        <fieldset className="min-w-0">
           <legend className="font-heading text-2xl">Πληρωμή</legend>
           <p className="mt-3 border border-border bg-card p-4 text-sm leading-relaxed text-muted-foreground">
             Αυτή είναι προσομοίωση. Δεν ζητάμε και δεν αποθηκεύουμε στοιχεία
